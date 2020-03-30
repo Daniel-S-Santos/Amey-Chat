@@ -7,9 +7,6 @@ const port = process.env.PORT || 3000
 
 io.on('connection', function (socket) {
     console.log('connection.....')
-    
-
-    var salas =[]
 
     socket.on('disconnect', function(){
         console.log('desconectado')
@@ -20,7 +17,7 @@ io.on('connection', function (socket) {
         socket.join(room)  
             
         console.log(`${name}`,'entrou na',room)
-        //socket.broadcast.emit('Entrou',`${socket.id} Entrou na sala ${room}`)        
+        io.in(room).emit('Entrou',room, name)        
     });  
     socket.on('mensagem', function (room,name,msg) {
         //console.log(`${nome}`,'mandou:', data); 
@@ -29,7 +26,7 @@ io.on('connection', function (socket) {
         //console.log(room+ ' nome '+name+ ' '+msg)        
         io.in(room).emit('msgg',room ,name ,msg)        
         //io.emit('mensagem',room ,name ,msg )
-
+        
         
         console.log('disse ',msg)
         //socket.emit('Me',data)

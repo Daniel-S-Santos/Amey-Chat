@@ -17,7 +17,8 @@ io.on('connection', function (socket) {
         socket.join(room)  
             
         console.log(`${name}`,'entrou na',room)
-        socket.in(room).emit('Entrou',room, name)        
+        socket.in(room).emit('Entrou',room, name) 
+        socket.emit('welcome',room, name)       
     });  
     socket.on('mensagem', function (room,name,msg) {
         //console.log(`${nome}`,'mandou:', data); 

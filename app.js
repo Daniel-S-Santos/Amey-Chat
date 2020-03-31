@@ -35,7 +35,6 @@ io.on('connection', function (socket) {
 
 });
 
-
 server.listen(port, () => {
     console.log('server rodando na porta '+port)
 });

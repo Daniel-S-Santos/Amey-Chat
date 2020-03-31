@@ -27,9 +27,9 @@ io.on('connection', function (socket) {
         //console.log(room+ ' nome '+name+ ' '+msg)        
         io.in(room).emit('msgg',room ,name ,msg)        
         //io.emit('mensagem',room ,name ,msg )
-        
-        
-        //console.log('disse ',msg)        
+                
+        console.log('disse ',msg)
+        //socket.emit('Me',data)
     }); 
 
 });
